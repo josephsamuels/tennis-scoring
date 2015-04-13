@@ -8,18 +8,16 @@ gulp.task('test', function()
         .pipe(phpspec('', { clear: true, notify: true }))
         .on('error', notify.onError({
             title: 'Failure',
-            message: 'Your tests failed',
-            icon: __dirname + '/fail.png'
+            message: 'Your tests failed'
         }))
         .pipe(notify({
             title: 'Success',
-            message: 'All tests have returned green.',
-            icon: __dirname + '/pass.png'
+            message: 'All tests have returned green.'
         }));
 });
 
 gulp.task('watch', function() {
-    gulp.watch(['spec/**/*.php', 'src/**/*.php'], ['test']);
+    gulp.watch(['**/*.php'], ['test']);
 });
 
-gulp.task('default', ['test', 'watch']);
+gulp.task('default', ['test']);
